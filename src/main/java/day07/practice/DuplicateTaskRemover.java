@@ -6,67 +6,69 @@ import java.util.HashSet;
 import java.util.List;
 
 class Task {
-	private int id;
-	private String name;
-	private LocalDate deadline;
+    private int id;
+    private String name;
+    private LocalDate deadline;
+
+    public Task(int id, String name, LocalDate deadline) {
+        this.id = id;
+        this.name = name;
+        this.deadline = deadline;
+    }
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public String getName() {
 		return name;
 	}
-	public Task(int id, String name, LocalDate deadline) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.deadline = deadline;
-	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public LocalDate getDeadline() {
 		return deadline;
 	}
+
 	public void setDeadline(LocalDate deadline) {
 		this.deadline = deadline;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Task [id=" + id + ", name=" + name + ", deadline=" + deadline + "]";
+	}
 }
+
 public class DuplicateTaskRemover {
 
-	public static void main(String[] args) {
-        List<String> result = DuplicateRemover.arrayList();
-		
-		HashSet<Integer> value =DuplicateRemover.UniqueOne(result);
-		
-		System.out.println(value);
+    public static void main(String[] args) {
+        List<Task> taskList = taskAddition();
+        HashSet<Task> uniqueTasks = UniqueOne(taskList);
 
-	}
+        System.out.println("Unique Tasks:");
+        for (Task task : uniqueTasks) {
+            System.out.println(task);
+        }
+    }
 
-	public static List<Integer> arrayList() {
-		List<Integer> integer = new ArrayList<>();
-		integer.add(1);
-		integer.add(2);
-		integer.add(3);
-		integer.add(3);
-		integer.add(4);
-		integer.add(4);
-		integer.add(5);
+    public static List<Task> taskAddition() {
+        ArrayList<Task> taskList = new ArrayList<>();
+        taskList.add(new Task(1, "Task 1", LocalDate.of(2023, 7, 15)));
+        taskList.add(new Task(2, "Task 2", LocalDate.of(2023, 7, 16)));
+        taskList.add(new Task(1, "Task 1", LocalDate.of(2023, 7, 15)));
+        taskList.add(new Task(4, "Task 3", LocalDate.of(2023, 7, 17)));
+        taskList.add(new Task(1, "Task 1", LocalDate.of(2023, 7, 15)));
+        return taskList;
+    }
 
-		return integer;
-	}
-
-	public static HashSet<Integer> UniqueOne(List<Integer> integer) {
-		
-		HashSet<Integer> value= new HashSet<>(integer);
-		
-		return value;
-
-	}
-
-	}
-
+    public static HashSet<Task> UniqueOne(List<Task> taskList) {
+        return new HashSet<>(taskList);
+    }
 }
