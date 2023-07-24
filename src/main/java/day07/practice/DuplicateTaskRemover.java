@@ -49,7 +49,7 @@ class Task {
 public class DuplicateTaskRemover {
 
     public static void main(String[] args) {
-        List<Task> taskList = taskAddition();
+        List<Task> taskList = taskAddition(0, null, null);
         HashSet<Task> uniqueTasks = UniqueOne(taskList);
 
         System.out.println("Unique Tasks:");
@@ -58,7 +58,7 @@ public class DuplicateTaskRemover {
         }
     }
 
-    public static List<Task> taskAddition() {
+    public static List<Task> taskAddition(int i, String string, LocalDate localDate) {
         ArrayList<Task> taskList = new ArrayList<>();
         taskList.add(new Task(1, "Task 1", LocalDate.of(2023, 7, 15)));
         taskList.add(new Task(2, "Task 2", LocalDate.of(2023, 7, 16)));

@@ -37,6 +37,7 @@ public class TestInfPolygon {
 		area = p.area(5,  6);
 		
 		System.out.println("Newly calculated Area: " + area);
+        
 
 	}
 

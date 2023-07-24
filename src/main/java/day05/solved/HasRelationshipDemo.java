@@ -44,7 +44,7 @@ public class HasRelationshipDemo {
 		Engine engine1 = new Engine("1000cc");
 
 		// Creating a maruti car
-		Car marutiCar = new Car("Maruti", engine1);
+		Car marutiCar = new Car("Maruti",engine1);
 
 		marutiCar.printCarDetails();
 
